@@ -8,71 +8,58 @@ namespace StudentCalculator
         {
             bool keepRunning = true;
 
-            Console.WriteLine("--- My Simple Calculator ---");
+            // Adding a little flair to the header for the new branch
+            Console.WriteLine("--- Student Scientific Calculator (v2.0) ---");
 
             while (keepRunning)
             {
-                // Input first number
-                Console.Write("Enter first number: ");
-                double num1 = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("\nChoose an operation:");
+                Console.WriteLine("1. Basic (+, -, *, /)");
+                Console.WriteLine("2. Square Root (sqrt)");
+                Console.WriteLine("3. Power (^) ");
+                Console.Write("Your choice: ");
+                string mode = Console.ReadLine();
 
-                // Input operator
-                Console.Write("Enter operator (+, -, *, /): ");
-                string op = Console.ReadLine();
-
-                // Input second number
-                Console.Write("Enter second number: ");
-                double num2 = Convert.ToDouble(Console.ReadLine());
-
-                double result = 0;
-
-                // Logic for calculation
-                if (op == "+")
+                if (mode == "1")
                 {
-                    result = num1 + num2;
-                    Console.WriteLine("Result: " + num1 + " + " + num2 + " = " + result);
+                    // Regular Calculator Logic
+                    Console.Write("Enter first number: ");
+                    double n1 = Convert.ToDouble(Console.ReadLine());
+                    Console.Write("Enter operator (+, -, *, /): ");
+                    string op = Console.ReadLine();
+                    Console.Write("Enter second number: ");
+                    double n2 = Convert.ToDouble(Console.ReadLine());
+
+                    if (op == "+") Console.WriteLine("Result: " + (n1 + n2));
+                    else if (op == "-") Console.WriteLine("Result: " + (n1 - n2));
+                    else if (op == "*") Console.WriteLine("Result: " + (n1 * n2));
+                    else if (op == "/") Console.WriteLine("Result: " + (n1 / n2));
                 }
-                else if (op == "-")
+                else if (mode == "2")
                 {
-                    result = num1 - num2;
-                    Console.WriteLine("Result: " + num1 + " - " + num2 + " = " + result);
+                    // Scientific: Square Root
+                    Console.Write("Enter number to sqrt: ");
+                    double num = Convert.ToDouble(Console.ReadLine());
+                    // Using Math.Sqrt is the standard way students learn this
+                    Console.WriteLine("Result: √" + num + " = " + Math.Sqrt(num));
                 }
-                else if (op == "*")
+                else if (mode == "3")
                 {
-                    result = num1 * num2;
-                    Console.WriteLine("Result: " + num1 + " * " + num2 + " = " + result);
-                }
-                else if (op == "/")
-                {
-                    // Basic check for division by zero
-                    if (num2 == 0)
-                    {
-                        Console.WriteLine("Error: Cannot divide by zero!");
-                    }
-                    else
-                    {
-                        result = num1 / num2;
-                        Console.WriteLine("Result: " + num1 + " / " + num2 + " = " + result);
-                    }
+                    // Scientific: Power
+                    Console.Write("Enter base number: ");
+                    double baseNum = Convert.ToDouble(Console.ReadLine());
+                    Console.Write("Enter exponent: ");
+                    double expo = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Result: " + baseNum + " to the power of " + expo + " = " + Math.Pow(baseNum, expo));
                 }
                 else
                 {
-                    Console.WriteLine("Invalid operator!");
+                    Console.WriteLine("Invalid option!");
                 }
 
-                // Ask to continue
-                Console.WriteLine("----------------------------");
-                Console.Write("Calculate again? (y/n): ");
-                string choice = Console.ReadLine().ToLower();
-
-                if (choice != "y")
-                {
-                    keepRunning = false;
-                }
-                
-                Console.WriteLine(); // Just for spacing
+                Console.Write("\nContinue? (y/n): ");
+                if (Console.ReadLine().ToLower() != "y") keepRunning = false;
             }
-
             Console.WriteLine("Goodbye!");
         }
     }
