@@ -47,21 +47,21 @@ namespace StudentCalculator
                     // Basic check for division by zero
                     if (num2 == 0)
                     {
-                        Console.WriteLine("Error: Cannot divide by zero!");
+                        Console.riteLine("Error: Cannot divide by zero!");
                     }
                     else
                     {
                         result = num1 / num2;
-                        Console.WriteLine("Result: " + num1 + " / " + num2 + " = " + result);
+                        Console.riteLine("Result: " + num1 + " / " + num2 + " = " + result);
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Invalid operator!");
+                    Console.riteLine("Invalid operator!");
                 }
 
                 // Ask to continue
-                Console.WriteLine("----------------------------");
+                Console.riteLine("----------------------------");
                 Console.Write("Calculate again? (y/n): ");
                 string choice = Console.ReadLine().ToLower();
 
@@ -70,10 +70,10 @@ namespace StudentCalculator
                     keepRunning = false;
                 }
                 
-                Console.WriteLine(); // Just for spacing
+                Console.riteLine(); // Just for spacing
             }
 
-            Console.WriteLine("Goodbye!");
+            Console.riteLine("Goodbye!");
         }
     }
 }
